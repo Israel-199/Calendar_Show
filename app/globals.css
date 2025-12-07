@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -38,7 +36,6 @@
 
     --radius: 0.75rem;
 
-    /* Status colors */
     --status-pending: 38 92% 50%;
     --status-pending-bg: 38 100% 95%;
     --status-confirmed: 152 69% 40%;
@@ -48,17 +45,15 @@
     --status-rescheduled: 262 83% 58%;
     --status-rescheduled-bg: 262 100% 97%;
 
-    /* Call interface */
     --call-active: 152 69% 40%;
     --call-ended: 0 72% 51%;
     --call-wave: 199 89% 48%;
 
-    /* Gradients */
+
     --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(175 77% 40%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(210 25% 98%) 0%, hsl(199 50% 95%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 25% 99%) 100%);
 
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(215 25% 15% / 0.05);
     --shadow-md: 0 4px 6px -1px hsl(215 25% 15% / 0.1), 0 2px 4px -2px hsl(215 25% 15% / 0.1);
     --shadow-lg: 0 10px 15px -3px hsl(215 25% 15% / 0.1), 0 4px 6px -4px hsl(215 25% 15% / 0.1);
@@ -124,11 +119,7 @@
   }
 }
 
-@layer base {
-  
-
- 
-}
+@layer base {}
 
 @layer utilities {
   .gradient-primary {
@@ -168,16 +159,18 @@
   }
 }
 
-/* Call wave animation */
+
 @keyframes pulse-ring {
   0% {
     transform: scale(0.8);
     opacity: 0.8;
   }
+
   50% {
     transform: scale(1);
     opacity: 0.4;
   }
+
   100% {
     transform: scale(1.2);
     opacity: 0;
@@ -185,9 +178,12 @@
 }
 
 @keyframes wave {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scaleY(0.5);
   }
+
   50% {
     transform: scaleY(1);
   }
@@ -217,56 +213,32 @@
   animation: wave 0.5s ease-in-out infinite 0.4s;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.rdp-day.day-pending::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #f59e0b;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.rdp-day.day-confirmed::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #22c55e;
 }
 
 
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+.rdp-day.day-pending.day-confirmed::after {
+  box-shadow: 8px 0 0 0 #22c55e;
+  background-color: #f59e0b;
 }
